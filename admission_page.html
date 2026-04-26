@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ভর্তি তথ্য — অনুশীলন প্রি-ক্যাডেট স্কুল</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0a1f44;
+  --navy-mid: #122b5e;
+  --navy-light: #1e4080;
+  --red: #c0392b;
+  --red-bright: #e74c3c;
+  --gold: #d4a017;
+  --gold-light: #f0c040;
+  --white: #ffffff;
+  --off-white: #f5f6f8;
+  --light-gray: #eaecf0;
+  --mid-gray: #6b7280;
+  --dark: #1a1a2e;
+  --text: #2c3e50;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── TOP BAR ── */
+.topbar {
+  background: var(--navy);
+  padding: 0.45rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.7);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.topbar-left { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+.topbar-left span { display: flex; align-items: center; gap: 0.4rem; }
+.topbar-right { display: flex; gap: 1rem; align-items: center; }
+.topbar-right a {
+  color: rgba(255,255,255,0.7); text-decoration: none;
+  font-size: 0.75rem; font-weight: 600;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+.topbar-right a:hover { background: var(--red); border-color: var(--red); color: #fff; }
+
+/* ── HEADER ── */
+header {
+  background: var(--white);
+  border-bottom: 3px solid var(--navy);
+  padding: 0.8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.header-brand { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+.logo-circle {
+  width: 70px; height: 70px; flex-shrink: 0;
+  background: var(--navy);
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  color: var(--gold);
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 0.55rem; font-weight: 700;
+  text-align: center; line-height: 1.3;
+}
+.logo-star { font-size: 1.4rem; display: block; }
+.school-name-bn {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 1.3rem; font-weight: 900;
+  color: var(--navy); line-height: 1.2;
+}
+.school-name-en { font-size: 0.78rem; color: var(--mid-gray); font-weight: 500; }
+.school-est { font-size: 0.7rem; color: var(--red); font-weight: 600; margin-top: 0.1rem; }
+.header-right { text-align: right; font-size: 0.8rem; color: var(--mid-gray); line-height: 1.8; }
+.header-right strong { color: var(--navy); font-size: 0.85rem; }
+
+/* ── NAV ── */
+nav {
+  background: var(--navy-mid);
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.nav-inner {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+.nav-links { display: flex; list-style: none; }
+.nav-links > li { position: relative; }
+.nav-links > li > a {
+  display: block;
+  padding: 0.9rem 1.1rem;
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.02em;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav-links > li > a:hover,
+.nav-links > li > a.active {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold);
+  background: rgba(255,255,255,0.05);
+}
+.nav-links li:hover .dropdown { display: block; }
+.dropdown {
+  display: none;
+  position: absolute; top: 100%; left: 0;
+  background: var(--navy);
+  min-width: 200px;
+  border-top: 2px solid var(--gold);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  z-index: 200;
+}
+.dropdown li a {
+  display: block;
+  padding: 0.65rem 1.2rem;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.15s;
+}
+.dropdown li a:hover { background: rgba(255,255,255,0.07); color: var(--gold-light); padding-left: 1.6rem; }
+.nav-notice-btn {
+  background: var(--red); color: #fff !important;
+  padding: 0.5rem 1.1rem !important;
+  border-radius: 2px; border-bottom: none !important;
+  margin-left: 0.5rem; font-size: 0.78rem !important;
+}
+.nav-notice-btn:hover { background: var(--red-bright) !important; }
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0.8rem;
+    background: none;
+    border: none;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger.open span:nth-child(1){
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2){
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3){
+    transform: translateY(-7px) rotate(-45deg);
+}
+.mobile-nav { display: none; flex-direction: column; background: var(--navy); padding: 0.5rem 0; }
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  padding: 0.75rem 1.5rem; color: rgba(255,255,255,0.8);
+  text-decoration: none; font-size: 0.85rem; font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.mobile-nav a:hover { background: rgba(255,255,255,0.06); color: var(--gold-light); }
+
+/* ── PAGE BANNER ── */
+.page-banner {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  padding: 3rem 2rem;
+  position: relative; overflow: hidden;
+}
+.page-banner::before {
+  content: '';
+  position: absolute; inset: 0; opacity: 0.05;
+  background-image: repeating-linear-gradient(
+    0deg, rgba(255,255,255,1) 0, rgba(255,255,255,1) 1px, transparent 1px, transparent 40px
+  ),
+  repeating-linear-gradient(
+    90deg, rgba(255,255,255,1) 0, rgba(255,255,255,1) 1px, transparent 1px, transparent 40px
+  );
+}
+.page-banner-inner {
+  max-width: 1200px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.breadcrumb {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.78rem; color: rgba(255,255,255,0.6);
+  margin-bottom: 0.8rem;
+}
+.breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
+.breadcrumb a:hover { color: var(--gold-light); }
+.breadcrumb span { color: var(--gold-light); }
+.page-banner h1 {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight: 900; color: #fff;
+  margin-bottom: 0.5rem;
+}
+.page-banner p { color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+
+/* ── MAIN LAYOUT ── */
+.page-wrapper {
+  max-width: 1200px; margin: 0 auto;
+  padding: 2.5rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2.5rem;
+}
+
+/* ── SECTION HEADING ── */
+.sec-heading {
+  display: flex; align-items: center; gap: 0;
+  margin-bottom: 1.5rem;
+}
+.sec-heading h2 {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--white);
+  background: var(--navy);
+  padding: 0.6rem 1.2rem;
+  border-left: 4px solid var(--red);
+}
+.sec-heading-line {
+  flex: 1; height: 2px;
+  background: linear-gradient(to right, var(--navy-light), transparent);
+}
+
+/* ── ADMISSION STEPS ── */
+.steps-section { margin-bottom: 2.5rem; }
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.step-card {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-top: 4px solid var(--navy);
+  border-radius: 4px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: all 0.2s;
+}
+.step-card:hover { border-top-color: var(--red); box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-3px); }
+.step-num {
+  width: 44px; height: 44px;
+  background: var(--navy);
+  color: var(--gold);
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 1.2rem; font-weight: 900;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 0.8rem;
+}
+.step-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
+.step-title {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 0.95rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 0.4rem;
+}
+.step-desc { font-size: 0.8rem; color: var(--mid-gray); line-height: 1.6; }
+
+/* ── ELIGIBILITY ── */
+.eligibility-section { margin-bottom: 2.5rem; }
+.eligibility-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--light-gray);
+  font-size: 0.88rem;
+}
+.eligibility-table th {
+  background: var(--navy);
+  color: var(--gold-light);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+.eligibility-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--light-gray);
+  vertical-align: middle;
+}
+.eligibility-table tr:nth-child(even) td { background: var(--off-white); }
+.eligibility-table tr:hover td { background: #eef2ff; }
+.class-badge {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  font-size: 0.78rem; font-weight: 700;
+}
+.seats-badge {
+  display: inline-block;
+  background: rgba(192,57,43,0.1);
+  color: var(--red);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  font-size: 0.78rem; font-weight: 700;
+  border: 1px solid rgba(192,57,43,0.2);
+}
+
+/* ── FEE STRUCTURE ── */
+.fee-section { margin-bottom: 2.5rem; }
+.fee-tabs {
+  display: flex; gap: 0;
+  border-bottom: 2px solid var(--navy);
+  margin-bottom: 0;
+}
+.fee-tab {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.82rem; font-weight: 700;
+  background: var(--light-gray); color: var(--mid-gray);
+  border: none; cursor: pointer;
+  transition: all 0.2s;
+  border-top: 3px solid transparent;
+  font-family: 'Hind Siliguri', sans-serif;
+}
+.fee-tab.active { background: var(--navy); color: var(--gold-light); border-top-color: var(--gold); }
+.fee-content { display: none; }
+.fee-content.active { display: block; }
+.fee-table {
+  width: 100%; border-collapse: collapse;
+  border: 1px solid var(--light-gray);
+  font-size: 0.88rem;
+}
+.fee-table th {
+  background: var(--navy-mid);
+  color: var(--gold-light);
+  padding: 0.7rem 1rem; text-align: left;
+  font-size: 0.8rem; font-weight: 600;
+}
+.fee-table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--light-gray);
+}
+.fee-table tr:nth-child(even) td { background: var(--off-white); }
+.fee-table .total-row td {
+  background: var(--navy) !important;
+  color: var(--gold-light);
+  font-weight: 700;
+}
+.fee-note {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 4px solid var(--gold);
+  padding: 0.8rem 1rem;
+  font-size: 0.82rem; color: #92400e;
+  margin-top: 0.8rem; border-radius: 0 3px 3px 0;
+}
+
+/* ── IMPORTANT DATES ── */
+.dates-section { margin-bottom: 2.5rem; }
+.dates-list { list-style: none; border: 1px solid var(--light-gray); border-radius: 4px; overflow: hidden; }
+.date-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--light-gray);
+  transition: background 0.15s;
+}
+.date-item:last-child { border-bottom: none; }
+.date-item:hover { background: var(--off-white); }
+.date-box {
+  min-width: 64px; text-align: center;
+  background: var(--navy); color: #fff;
+  padding: 0.5rem 0.4rem; border-radius: 3px;
+  flex-shrink: 0;
+}
+.date-day { font-size: 1.4rem; font-weight: 900; font-family: 'Noto Serif Bengali', serif; line-height: 1; }
+.date-mon { font-size: 0.62rem; opacity: 0.75; letter-spacing: 0.05em; margin-top: 0.1rem; }
+.date-info { flex: 1; }
+.date-event {
+  font-weight: 600; color: var(--navy); font-size: 0.9rem; margin-bottom: 0.15rem;
+}
+.date-detail { font-size: 0.78rem; color: var(--mid-gray); }
+.date-status {
+  font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem;
+  border-radius: 3px; flex-shrink: 0;
+}
+.status-open { background: #d1fae5; color: #065f46; }
+.status-upcoming { background: #dbeafe; color: #1e40af; }
+.status-closed { background: #fee2e2; color: #991b1b; }
+
+/* ── APPLICATION FORM ── */
+.form-section { margin-bottom: 2.5rem; }
+.adm-form {
+  background: var(--off-white);
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+  padding: 2rem;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 0.8rem; font-weight: 700;
+  color: var(--navy);
+}
+.form-group label span { color: var(--red); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 3px;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 0.88rem; color: var(--text);
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(10,31,68,0.08);
+}
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-group select { cursor: pointer; }
+.form-submit {
+  display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+  padding-top: 0.5rem;
+}
+.btn-submit {
+  background: var(--navy); color: #fff;
+  padding: 0.8rem 2rem;
+  font-size: 0.9rem; font-weight: 700;
+  border: none; border-radius: 3px;
+  cursor: pointer; font-family: 'Hind Siliguri', sans-serif;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-submit:hover { background: var(--navy-light); transform: translateY(-1px); }
+.btn-reset {
+  background: transparent; color: var(--mid-gray);
+  padding: 0.8rem 1.5rem;
+  font-size: 0.88rem; font-weight: 600;
+  border: 1px solid var(--light-gray); border-radius: 3px;
+  cursor: pointer; font-family: 'Hind Siliguri', sans-serif;
+  transition: all 0.2s;
+}
+.btn-reset:hover { border-color: var(--mid-gray); color: var(--text); }
+.form-note { font-size: 0.75rem; color: var(--mid-gray); }
+
+/* ── DOCUMENTS REQUIRED ── */
+.docs-section { margin-bottom: 2.5rem; }
+.docs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+.doc-item {
+  display: flex; align-items: flex-start; gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  background: var(--off-white);
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+  border-left: 3px solid var(--navy);
+  transition: border-color 0.2s;
+}
+.doc-item:hover { border-left-color: var(--red); }
+.doc-icon { font-size: 1.3rem; flex-shrink: 0; }
+.doc-text { font-size: 0.85rem; color: var(--text); line-height: 1.5; font-weight: 500; }
+.doc-sub { font-size: 0.75rem; color: var(--mid-gray); font-weight: 400; }
+
+/* ── SCHOLARSHIP ── */
+.scholarship-section { margin-bottom: 2.5rem; }
+.scholarship-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.schol-card {
+  border-radius: 4px; overflow: hidden;
+  border: 1px solid var(--light-gray);
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+.schol-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+.schol-top {
+  padding: 1.5rem 1rem;
+  background: var(--navy);
+}
+.schol-icon { font-size: 2.2rem; margin-bottom: 0.5rem; }
+.schol-name {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 1rem; font-weight: 700;
+  color: var(--gold-light); margin-bottom: 0.3rem;
+}
+.schol-pct {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 2rem; font-weight: 900;
+  color: #fff; line-height: 1;
+}
+.schol-pct-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); }
+.schol-body {
+  padding: 1rem;
+  background: var(--off-white);
+}
+.schol-criteria { font-size: 0.8rem; color: var(--mid-gray); line-height: 1.65; }
+
+/* ── SIDEBAR ── */
+.sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.sidebar-widget { border: 1px solid var(--light-gray); border-radius: 4px; overflow: hidden; }
+.widget-header {
+  background: var(--navy);
+  color: var(--gold-light);
+  padding: 0.6rem 1rem;
+  font-size: 0.78rem; font-weight: 700;
+  border-left: 4px solid var(--red);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.widget-header a { color: rgba(255,255,255,0.5); font-size: 0.7rem; text-decoration: none; }
+.widget-header a:hover { color: var(--gold-light); }
+.widget-body { padding: 1.2rem; }
+
+/* Helpline box */
+.helpline-box { background: var(--navy); border-radius: 4px; padding: 1.5rem; text-align: center; }
+.helpline-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.helpline-title { font-family: 'Noto Serif Bengali', serif; color: var(--gold-light); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.8rem; }
+.helpline-num { font-size: 1.3rem; font-weight: 700; color: #fff; display: block; margin-bottom: 0.3rem; }
+.helpline-time { font-size: 0.75rem; color: rgba(255,255,255,0.55); margin-bottom: 1rem; }
+.helpline-btn {
+  display: block; background: var(--red); color: #fff;
+  padding: 0.6rem 1rem; border-radius: 3px;
+  text-decoration: none; font-size: 0.82rem; font-weight: 700;
+  transition: background 0.2s;
+}
+.helpline-btn:hover { background: var(--red-bright); }
+
+/* Download list */
+.download-list { list-style: none; }
+.download-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--light-gray);
+  gap: 0.5rem;
+}
+.download-item:last-child { border-bottom: none; }
+.download-name { font-size: 0.82rem; color: var(--text); line-height: 1.4; flex: 1; }
+.download-btn {
+  background: var(--navy); color: var(--gold-light);
+  padding: 0.3rem 0.7rem; border-radius: 2px;
+  font-size: 0.7rem; font-weight: 700;
+  text-decoration: none; flex-shrink: 0;
+  transition: background 0.2s;
+}
+.download-btn:hover { background: var(--navy-light); }
+
+/* FAQ */
+.faq-list { list-style: none; }
+.faq-item { border-bottom: 1px solid var(--light-gray); }
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  padding: 0.85rem 1rem;
+  font-size: 0.83rem; font-weight: 600;
+  color: var(--navy); cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 0.5rem;
+  transition: background 0.15s;
+  background: none; border: none;
+  width: 100%; text-align: left;
+  font-family: 'Hind Siliguri', sans-serif;
+}
+.faq-q:hover { background: var(--off-white); }
+.faq-q.open { color: var(--red); background: var(--off-white); }
+.faq-icon { flex-shrink: 0; transition: transform 0.2s; }
+.faq-q.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  display: none;
+  padding: 0 1rem 0.85rem;
+  font-size: 0.8rem; color: var(--mid-gray);
+  line-height: 1.7;
+}
+.faq-a.open { display: block; }
+
+/* Notice list in sidebar */
+.notice-list { list-style: none; }
+.notice-item {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--light-gray);
+  display: flex; gap: 0.5rem; align-items: flex-start;
+}
+.notice-item:last-child { border-bottom: none; }
+.notice-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); flex-shrink: 0; margin-top: 5px; }
+.notice-item a { font-size: 0.82rem; color: var(--text); text-decoration: none; line-height: 1.5; }
+.notice-item a:hover { color: var(--red); }
+.notice-date { font-size: 0.68rem; color: var(--mid-gray); display: block; margin-top: 0.1rem; }
+
+/* ── FOOTER ── */
+footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 3rem 2rem 1.5rem; }
+.footer-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 1.5rem;
+}
+.footer-brand-name { font-family: 'Noto Serif Bengali', serif; font-size: 1.1rem; color: #fff; font-weight: 700; margin-bottom: 0.4rem; }
+.footer-brand-sub { font-size: 0.78rem; margin-bottom: 1rem; }
+.footer-contact { font-size: 0.8rem; line-height: 2; }
+.footer-contact span { display: flex; gap: 0.5rem; align-items: center; }
+.footer-col h4 {
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--gold-light); margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col a {
+  text-decoration: none; color: rgba(255,255,255,0.5);
+  font-size: 0.82rem; transition: color 0.2s;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.footer-col a::before { content: '›'; color: var(--red); }
+.footer-col a:hover { color: var(--gold-light); }
+.footer-bottom {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 0.8rem;
+  font-size: 0.75rem;
+}
+.footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+.footer-bottom a:hover { color: var(--gold-light); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .page-wrapper { grid-template-columns: 1fr 280px; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .scholarship-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .topbar { padding: 0.4rem 1rem; }
+  .topbar-right { display: none; }
+  header { padding: 0.8rem 1rem; }
+  .header-right { display: none; }
+  .logo-circle { width: 55px; height: 55px; }
+  .school-name-bn { font-size: 1rem; }
+  .nav-inner { padding: 0 1rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  .page-wrapper { grid-template-columns: 1fr; padding: 1.5rem 1rem; }
+  .sidebar { order: -1; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .docs-grid { grid-template-columns: 1fr; }
+  .scholarship-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+}
+@media (max-width: 480px) {
+  .steps-grid { grid-template-columns: 1fr; }
+  .eligibility-table { font-size: 0.78rem; }
+  .fee-tabs { overflow-x: auto; }
+  .fee-tab { white-space: nowrap; padding: 0.5rem 0.9rem; font-size: 0.75rem; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 ভৈরব, কিশোরগঞ্জ, বাংলাদেশ</span>
+    <span>📞 +৮৮০ ১৭০০-০০০০০০</span>
+    <span>✉️ info@anushilan.edu.bd</span>
+  </div>
+  <div class="topbar-right">
+    <a href="#">শিক্ষার্থী পোর্টাল</a>
+    <a href="#">অভিভাবক পোর্টাল</a>
+    <a href="#">স্টাফ লগইন</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <a href="anushilan-school.html" class="header-brand">
+    <div class="logo-circle">
+      <span class="logo-star">★</span>
+      অপ্রকা
+    </div>
+    <div>
+      <div class="school-name-bn">অনুশীলন প্রি-ক্যাডেট স্কুল</div>
+      <div class="school-name-en">Anushilan Pre-Cadet School</div>
+      <div class="school-est">প্রতিষ্ঠা: ২০০৫ · ভৈরব, বাংলাদেশ</div>
+    </div>
+  </a>
+  <div class="header-right">
+    <strong>ভর্তি চলছে ২০২৫–২৬</strong><br>
+    ষষ্ঠ – দশম শ্রেণি · আবেদনের শেষ তারিখ: ৩১ আগস্ট<br>
+    📞 +৮৮০ ১৭০০-০০০০০০
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <ul class="nav-links">
+      <li><a href="index.html">প্রচ্ছদ</a></li>
+      <li>
+        <a href="#">আমাদের সম্পর্কে ▾</a>
+        <ul class="dropdown">
+          <li><a href="#">ইতিহাস</a></li>
+          <li><a href="#">লক্ষ্য ও উদ্দেশ্য</a></li>
+          <li><a href="#">অধ্যক্ষের বাণী</a></li>
+          <li><a href="#">শিক্ষক ও কর্মচারী</a></li>
+          <li><a href="#">অবকাঠামো</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">একাডেমিক ▾</a>
+        <ul class="dropdown">
+          <li><a href="#">পাঠ্যক্রম</a></li>
+          <li><a href="#">ক্লাস রুটিন</a></li>
+          <li><a href="#">পরীক্ষার ফলাফল</a></li>
+          <li><a href="#">পরীক্ষা</a></li>
+          <li><a href="#">গ্রন্থাগার</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" class="active">ভর্তি ▾</a>
+        <ul class="dropdown">
+          <li><a href="#">আবেদন করুন</a></li>
+          <li><a href="#">ফি ও পেমেন্ট</a></li>
+          <li><a href="#">যোগ্যতা</a></li>
+          <li><a href="#">বৃত্তি</a></li>
+        </ul>
+      </li>
+      <li><a href="#">ক্যাডেট কার্যক্রম</a></li>
+      <li><a href="#">ফটো গ্যালারি</a></li>
+      <li><a href="contact_page.html" class="thisPageisActive">যোগাযোগ</a></li>
+      <li><a href="#" class="nav-notice-btn">📋 নোটিশ বোর্ড</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">🏠 প্রচ্ছদ</a>
+    <a href="#">ℹ️ আমাদের সম্পর্কে</a>
+    <a href="#">📚 একাডেমিক</a>
+    <a href="#">📝 ভর্তি</a>
+    <a href="#">⚔️ ক্যাডেট কার্যক্রম</a>
+    <a href="#">🖼️ গ্যালারি</a>
+    <a href="#">📋 নোটিশ</a>
+    <a href="contact_page.html" class="thisPageisActive">📞 যোগাযোগ</a>
+  </div>
+</nav>
+
+<!-- PAGE BANNER -->
+<div class="page-banner">
+  <div class="page-banner-inner">
+    <div class="breadcrumb">
+      <a href="anushilan-school.html">প্রচ্ছদ</a>
+      <span>›</span>
+      <span>ভর্তি তথ্য</span>
+    </div>
+    <h1>📝 ভর্তি তথ্য ২০২৬–২৭</h1>
+    <p>অনুশীলন প্রি-ক্যাডেট স্কুলে ভর্তির সম্পূর্ণ তথ্য, আবেদন ফর্ম ও গুরুত্বপূর্ণ তারিখসমূহ</p>
+  </div>
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="page-wrapper">
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- HOW TO APPLY STEPS -->
+    <div class="steps-section">
+      <div class="sec-heading">
+        <h2>ভর্তির ধাপসমূহ</h2>
+        <div class="sec-heading-line"></div>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">১</div>
+          <div class="step-icon">📋</div>
+          <div class="step-title">আবেদন ফর্ম সংগ্রহ</div>
+          <div class="step-desc">বিদ্যালয় অফিস থেকে অথবা এই ওয়েবসাইট থেকে আবেদন ফর্ম ডাউনলোড করুন।</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">২</div>
+          <div class="step-icon">✍️</div>
+          <div class="step-title">ফর্ম পূরণ ও জমা</div>
+          <div class="step-desc">প্রয়োজনীয় সকল তথ্য সঠিকভাবে পূরণ করে প্রয়োজনীয় কাগজপত্রসহ জমা দিন।</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">৩</div>
+          <div class="step-icon">📝</div>
+          <div class="step-title">ভর্তি পরীক্ষা</div>
+          <div class="step-desc">নির্ধারিত তারিখে বাংলা, ইংরেজি ও গণিত বিষয়ে লিখিত পরীক্ষায় অংশগ্রহণ করুন।</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">৪</div>
+          <div class="step-icon">🎓</div>
+          <div class="step-title">ভর্তি নিশ্চিতকরণ</div>
+          <div class="step-desc">মেধাতালিকায় উত্তীর্ণ হলে নির্ধারিত সময়ের মধ্যে ফি পরিশোধ করে ভর্তি নিশ্চিত করুন।</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELIGIBILITY TABLE -->
+    <div class="eligibility-section">
+      <div class="sec-heading">
+        <h2>শ্রেণিভিত্তিক যোগ্যতা ও আসন সংখ্যা</h2>
+        <div class="sec-heading-line"></div>
+      </div>
+      <table class="eligibility-table">
+        <thead>
+          <tr>
+            <th>শ্রেণি</th>
+            <th>পূর্ববর্তী পরীক্ষায় ন্যূনতম ফলাফল</th>
+            <th>বয়সসীমা</th>
+            <th>মোট আসন</th>
+            <th>অবস্থা</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="class-badge">ষষ্ঠ শ্রেণি</span></td>
+            <td>পঞ্চম শ্রেণিতে A+ (সকল বিষয়)</td>
+            <td>১০–১২ বছর</td>
+            <td><span class="seats-badge">৬০ আসন</span></td>
+            <td><span class="date-status status-open">খোলা আছে</span></td>
+          </tr>
+          <tr>
+            <td><span class="class-badge">সপ্তম শ্রেণি</span></td>
+            <td>ষষ্ঠ শ্রেণিতে GPA ৪.৫০ বা তার উপরে</td>
+            <td>১১–১৩ বছর</td>
+            <td><span class="seats-badge">৩০ আসন</span></td>
+            <td><span class="date-status status-open">খোলা আছে</span></td>
+          </tr>
+          <tr>
+            <td><span class="class-badge">অষ্টম শ্রেণি</span></td>
+            <td>সপ্তম শ্রেণিতে GPA ৪.৫০ বা তার উপরে</td>
+            <td>১২–১৪ বছর</td>
+            <td><span class="seats-badge">২০ আসন</span></td>
+            <td><span class="date-status status-upcoming">সীমিত</span></td>
+          </tr>
+          <tr>
+            <td><span class="class-badge">নবম শ্রেণি</span></td>
+            <td>JDC/JSC তে GPA ৫.০০</td>
+            <td>১৩–১৫ বছর</td>
+            <td><span class="seats-badge">৪০ আসন</span></td>
+            <td><span class="date-status status-open">খোলা আছে</span></td>
+          </tr>
+          <tr>
+            <td><span class="class-badge">দশম শ্রেণি</span></td>
+            <td>নবম শ্রেণিতে GPA ৪.৭৫ বা তার উপরে</td>
+            <td>১৪–১৬ বছর</td>
+            <td><span class="seats-badge">১০ আসন</span></td>
+            <td><span class="date-status status-closed">আসন নেই</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FEE STRUCTURE -->
+    <div class="fee-section">
+      <div class="sec-heading">
+        <h2>ফি কাঠামো</h2>
+        <div class="sec-heading-line"></div>
+      </div>
+      <div class="fee-tabs">
+        <button class="fee-tab active" data-fee="admission-fee">ভর্তি ফি</button>
+        <button class="fee-tab" data-fee="monthly-fee">মাসিক ফি</button>
+        <button class="fee-tab" data-fee="other-fee">অন্যান্য ফি</button>
+      </div>
+
+      <div id="admission-fee" class="fee-content active">
+        <table class="fee-table">
+          <thead><tr><th>বিবরণ</th><th>ষষ্ঠ–অষ্টম শ্রেণি</th><th>নবম–দশম শ্রেণি</th></tr></thead>
+          <tbody>
+            <tr><td>ভর্তি ফি</td><td>৳ ৩,০০০</td><td>৳ ৩,৫০০</td></tr>
+            <tr><td>ফর্ম ফি</td><td>৳ ২০০</td><td>৳ ২০০</td></tr>
+            <tr><td>উন্নয়ন ফি</td><td>৳ ১,৫০০</td><td>৳ ২,০০০</td></tr>
+            <tr><td>ক্যাডেট কিট</td><td>৳ ২,৫০০</td><td>৳ ২,৫০০</td></tr>
+            <tr><td>পরিচয়পত্র ও ডায়েরি</td><td>৳ ৩০০</td><td>৳ ৩০০</td></tr>
+            <tr class="total-row"><td><strong>মোট (একবার)</strong></td><td><strong>৳ ৭,৫০০</strong></td><td><strong>৳ ৮,৫০০</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="monthly-fee" class="fee-content">
+        <table class="fee-table">
+          <thead><tr><th>বিবরণ</th><th>ষষ্ঠ–সপ্তম</th><th>অষ্টম–নবম</th><th>দশম শ্রেণি</th></tr></thead>
+          <tbody>
+            <tr><td>টিউশন ফি</td><td>৳ ৮০০</td><td>৳ ৯৫০</td><td>৳ ১,১০০</td></tr>
+            <tr><td>বিদ্যালয় ফি</td><td>৳ ২০০</td><td>৳ ২৫০</td><td>৳ ৩০০</td></tr>
+            <tr><td>ক্যাডেট প্রশিক্ষণ ফি</td><td>৳ ৩০০</td><td>৳ ৩০০</td><td>৳ ৩০০</td></tr>
+            <tr><td>পরিবহন (ঐচ্ছিক)</td><td>৳ ৫০০</td><td>৳ ৫০০</td><td>৳ ৫০০</td></tr>
+            <tr class="total-row"><td><strong>মোট (মাসিক)</strong></td><td><strong>৳ ১,৩০০</strong></td><td><strong>৳ ১,৫০০</strong></td><td><strong>৳ ১,৭০০</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="other-fee" class="fee-content">
+        <table class="fee-table">
+          <thead><tr><th>বিবরণ</th><th>পরিমাণ</th><th>প্রযোজ্য</th></tr></thead>
+          <tbody>
+            <tr><td>বার্ষিক ক্রীড়া ফি</td><td>৳ ৫০০</td><td>সকল শ্রেণি</td></tr>
+            <tr><td>বার্ষিক সাংস্কৃতিক ফি</td><td>৳ ৩০০</td><td>সকল শ্রেণি</td></tr>
+            <tr><td>পরীক্ষা ফি (অর্ধবার্ষিক)</td><td>৳ ৪০০</td><td>সকল শ্রেণি</td></tr>
+            <tr><td>পরীক্ষা ফি (বার্ষিক)</td><td>৳ ৬০০</td><td>সকল শ্রেণি</td></tr>
+            <tr><td>বোর্ড পরীক্ষা ফি (JSC)</td><td>৳ ১,২০০</td><td>অষ্টম শ্রেণি</td></tr>
+            <tr><td>বোর্ড পরীক্ষা ফি (SSC)</td><td>৳ ১,৮০০</td><td>দশম শ্রেণি</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="fee-note">
+        ⚠️ <strong>দ্রষ্টব্য:</strong> উপরের ফি কাঠামো ২০২৬–২৭ শিক্ষাবর্ষের জন্য প্রযোজ্য। কর্তৃপক্ষ যেকোনো সময় ফি পরিবর্তনের অধিকার সংরক্ষণ করে।
+      </div>
+    </div>
+
+    <!-- IMPORTANT DATES -->
+    <div class="dates-section">
+      <div class="sec-heading">
+        <h2>গুরুত্বপূর্ণ তারিখসমূহ</h2>
+        <div class="sec-heading-line"></div>
+      </div>
+      <ul class="dates-list">
+        <li class="date-item">
+          <div class="date-box"><div class="date-day">২০</div><div class="date-mon">মার্চ</div></div>
+          <div class="date-info">
+            <div class="date-event">ভর্তি বিজ্ঞপ্তি প্রকাশ</div>
+            <div class="date-detail">২০ মার্চ ২০২৬ — বিদ্যালয়ের ওয়েবসাইট ও নোটিশ বোর্ডে</div>
+          </div>
+          <span class="date-status status-closed">সম্পন্ন</span>
+        </li>
+        <li class="date-item">
+          <div class="date-box"><div class="date-day">০১</div><div class="date-mon">এপ্রিল</div></div>
+          <div class="date-info">
+            <div class="date-event">আবেদন ফর্ম বিতরণ শুরু</div>
+            <div class="date-detail">১ এপ্রিল থেকে বিদ্যালয় অফিস থেকে ফর্ম সংগ্রহ করা যাবে</div>
+          </div>
+          <span class="date-status status-closed">সম্পন্ন</span>
+        </li>
+        <li class="date-item">
+          <div class="date-box" style="background:var(--red)"><div class="date-day">৩১</div><div class="date-mon">মে</div></div>
+          <div class="date-info">
+            <div class="date-event">আবেদন জমার শেষ তারিখ</div>
+            <div class="date-detail">৩১ মে ২০২৬ — বিকাল ৪:০০টার মধ্যে জমা দিতে হবে</div>
+          </div>
+          <span class="date-status status-open">চলমান</span>
+        </li>
+        <li class="date-item">
+          <div class="date-box"><div class="date-day">০১</div><div class="date-mon">জুন</div></div>
+          <div class="date-info">
+            <div class="date-event">ভর্তি পরীক্ষা (ষষ্ঠ শ্রেণি)</div>
+            <div class="date-detail">১ জুন ২০২৬, সকাল ৯:০০টা — বিষয়: বাংলা, ইংরেজি, গণিত</div>
+          </div>
+          <span class="date-status status-upcoming">আসছে</span>
+        </li>
+        <li class="date-item">
+          <div class="date-box"><div class="date-day">০২</div><div class="date-mon">জুন</div></div>
+          <div class="date-info">
+            <div class="date-event">ভর্তি পরীক্ষা (নবম শ্রেণি)</div>
+            <div class="date-detail">২ জুন ২০২৬, সকাল ৯:০০টা — বিষয়: বাংলা, ইংরেজি, গণিত, বিজ্ঞান</div>
+          </div>
+          <span class="date-status status-upcoming">আসছে</span>
+        </li>
+        <li class="date-item">
+          <div class="date-box"><div class="date-day">০৮</div><div class="date-mon">জুন</div></div>
+          <div class="date-info">
+            <div class="date-event">মেধাতালিকা প্রকাশ</div>
+            <div class="date-detail">৮ জুন ২০২৬ — ওয়েবসাইট ও নোটিশ বোর্ডে প্রকাশিত হবে</div>
+          </div>
+          <span class="date-status status-upcoming">আসছে</span>
+        </li>
+        <li class="date-item">
+          <div class="date-box"><div class="date-day">১৫</div><div class="date-mon">জুন</div></div>
+          <div class="date-info">
+            <div class="date-event">ভর্তি নিশ্চিতকরণের শেষ তারিখ</div>
+            <div class="date-detail">১৫ জুন ২০২৬ — ফি পরিশোধের মাধ্যমে ভর্তি নিশ্চিত করতে হবে</div>
+          </div>
+          <span class="date-status status-upcoming">আসছে</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- APPLICATION FORM -->
+    <div class="form-section">
+      <div class="sec-heading">
+        <h2>অনলাইন আবেদন ফর্ম</h2>
+        <div class="sec-heading-line"></div>
+      </div>
+      <div class="adm-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>শিক্ষার্থীর নাম (বাংলায়) <span>*</span></label>
+            <input type="text" placeholder="যেমন: মোহাম্মদ রাফি হোসেন">
+          </div>
+          <div class="form-group">
+            <label>শিক্ষার্থীর নাম (ইংরেজিতে) <span>*</span></label>
+            <input type="text" placeholder="e.g. Mohammad Rafi Hossain">
+          </div>
+          <div class="form-group">
+            <label>পিতার নাম <span>*</span></label>
+            <input type="text" placeholder="পিতার সম্পূর্ণ নাম">
+          </div>
+          <div class="form-group">
+            <label>মাতার নাম <span>*</span></label>
+            <input type="text" placeholder="মাতার সম্পূর্ণ নাম">
+          </div>
+          <div class="form-group">
+            <label>জন্ম তারিখ <span>*</span></label>
+            <input type="date">
+          </div>
+          <div class="form-group">
+            <label>লিঙ্গ <span>*</span></label>
+            <select>
+              <option value="">নির্বাচন করুন</option>
+              <option>পুরুষ</option>
+              <option>মহিলা</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>ভর্তিচ্ছু শ্রেণি <span>*</span></label>
+            <select>
+              <option value="">শ্রেণি নির্বাচন করুন</option>
+              <option>ষষ্ঠ শ্রেণি</option>
+              <option>সপ্তম শ্রেণি</option>
+              <option>অষ্টম শ্রেণি</option>
+              <option>নবম শ্রেণি</option>
+              <option>দশম শ্রেণি</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>পূর্বের বিদ্যালয়ের নাম <span>*</span></label>
+            <input type="text" placeholder="পূর্ববর্তী বিদ্যালয়ের নাম">
+          </div>
+          <div class="form-group">
+            <label>পূর্ববর্তী পরীক্ষার ফলাফল (GPA) <span>*</span></label>
+            <input type="text" placeholder="যেমন: GPA ৫.০০">
+          </div>
+          <div class="form-group">
+            <label>অভিভাবকের মোবাইল নম্বর <span>*</span></label>
+            <input type="tel" placeholder="+৮৮০ ১৭০০-০০০০০০">
+          </div>
+          <div class="form-group">
+            <label>ইমেইল ঠিকানা</label>
+            <input type="email" placeholder="example@email.com">
+          </div>
+          <div class="form-group">
+            <label>জাতীয় পরিচয়পত্র নম্বর (পিতা/মাতা) <span>*</span></label>
+            <input type="text" placeholder="NID নম্বর">
+          </div>
+          <div class="form-group full">
+            <label>বর্তমান ঠিকানা <span>*</span></label>
+            <textarea placeholder="গ্রাম/মহল্লা, ডাকঘর, থানা, জেলা..."></textarea>
+          </div>
+          <div class="form-group full">
+            <label>বিশেষ তথ্য / মন্তব্য</label>
+            <textarea placeholder="কোনো বিশেষ তথ্য থাকলে এখানে লিখুন..."></textarea>
+          </div>
+        </div>
+        <div class="form-submit">
+          <button class="btn-submit">📤 আবেদন জমা দিন</button>
+          <button class="btn-reset" type="reset">↺ পুনরায় শুরু করুন</button>
+          <span class="form-note">* চিহ্নিত ঘরগুলো পূরণ করা আবশ্যক</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- REQUIRED DOCUMENTS -->
+    <div class="docs-section">
+      <div class="sec-heading">
+        <h2>প্রয়োজনীয় কাগজপত্র</h2>
+        <div class="sec-heading-line"></div>
+      </div>
+      <div class="docs-grid">
+        <div class="doc-item">
+          <div class="doc-icon">📄</div>
+          <div>
+            <div class="doc-text">পূরণকৃত আবেদন ফর্ম</div>
+            <div class="doc-sub">সকল তথ্য স্পষ্টভাবে পূরণ করতে হবে</div>
+          </div>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon">📜</div>
+          <div>
+            <div class="doc-text">পূর্ববর্তী শ্রেণির মূল মার্কশিট ও প্রশংসাপত্র</div>
+            <div class="doc-sub">সত্যায়িত ফটোকপি সহ</div>
+          </div>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon">🖼️</div>
+          <div>
+            <div class="doc-text">৪ কপি পাসপোর্ট সাইজ ছবি</div>
+            <div class="doc-sub">সাম্প্রতিক তোলা, সাদা ব্যাকগ্রাউন্ড</div>
+          </div>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon">🏥</div>
+          <div>
+            <div class="doc-text">জন্ম নিবন্ধন সনদের সত্যায়িত কপি</div>
+            <div class="doc-sub">অনলাইন জন্ম নিবন্ধন প্রযোজ্য</div>
+          </div>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon">🪪</div>
+          <div>
+            <div class="doc-text">পিতা/মাতার জাতীয় পরিচয়পত্রের কপি</div>
+            <div class="doc-sub">উভয়ের কপি জমা দিতে হবে</div>
+          </div>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon">🏠</div>
+          <div>
+            <div class="doc-text">স্থানীয় পরিষদের নাগরিকত্ব সনদ</div>
+            <div class="doc-sub">ইউনিয়ন/পৌরসভা থেকে সংগৃহীত</div>
+          </div>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon">💉</div>
+          <div>
+            <div class="doc-text">স্বাস্থ্য সনদ / টিকা কার্ড</div>
+            <div class="doc-sub">রেজিস্টার্ড চিকিৎসক কর্তৃক প্রদত্ত</div>
+          </div>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon">💳</div>
+          <div>
+            <div class="doc-text">আবেদন ফি জমার রশিদ</div>
+            <div class="doc-sub">২০০ টাকা বিদ্যালয় অফিসে জমা দিন</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCHOLARSHIP -->
+    <div class="scholarship-section">
+      <div class="sec-heading">
+        <h2>বৃত্তি ও আর্থিক সুবিধা</h2>
+        <div class="sec-heading-line"></div>
+      </div>
+      <div class="scholarship-grid">
+        <div class="schol-card">
+          <div class="schol-top">
+            <div class="schol-icon">🥇</div>
+            <div class="schol-name">মেধা বৃত্তি</div>
+            <div class="schol-pct">১০০%</div>
+            <div class="schol-pct-label">মাসিক ফি মওকুফ</div>
+          </div>
+          <div class="schol-body">
+            <div class="schol-criteria">ভর্তি পরীক্ষায় সর্বোচ্চ নম্বর প্রাপ্ত শিক্ষার্থী। প্রতি শ্রেণিতে ১ জন। ফলাফল অনুযায়ী প্রতি বছর নবায়ন।</div>
+          </div>
+        </div>
+        <div class="schol-card">
+          <div class="schol-top" style="background:var(--red)">
+            <div class="schol-icon">🥈</div>
+            <div class="schol-name">প্রতিভা বৃত্তি</div>
+            <div class="schol-pct">৫০%</div>
+            <div class="schol-pct-label">মাসিক ফি মওকুফ</div>
+          </div>
+          <div class="schol-body">
+            <div class="schol-criteria">ভর্তি পরীক্ষায় ২য় ও ৩য় স্থান অর্জনকারী। প্রতি শ্রেণিতে ২ জন। বার্ষিক পরীক্ষার ফলের ভিত্তিতে নবায়নযোগ্য।</div>
+          </div>
+        </div>
+        <div class="schol-card">
+          <div class="schol-top" style="background:#2c6e49">
+            <div class="schol-icon">🤝</div>
+            <div class="schol-name">দুস্থ সহায়তা</div>
+            <div class="schol-pct">৭৫%</div>
+            <div class="schol-pct-label">মাসিক ফি মওকুফ</div>
+          </div>
+          <div class="schol-body">
+            <div class="schol-criteria">আর্থিকভাবে অসচ্ছল মেধাবী শিক্ষার্থীদের জন্য। আবেদনের ভিত্তিতে যাচাই করে প্রদান করা হয়।</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main-content -->
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- Helpline -->
+    <div class="helpline-box">
+      <div class="helpline-icon">📞</div>
+      <div class="helpline-title">ভর্তি সহায়তা হেল্পলাইন</div>
+      <span class="helpline-num">+৮৮০ ১৭০০-০০০০০০</span>
+      <div class="helpline-time">শনি–বৃহস্পতি: সকাল ৯টা – বিকাল ৪টা</div>
+      <a href="mailto:admission@anushilan.edu.bd" class="helpline-btn">✉️ ইমেইল করুন</a>
+    </div>
+
+    <!-- Downloads -->
+    <div class="sidebar-widget">
+      <div class="widget-header">📥 ডাউনলোড</div>
+      <ul class="download-list">
+        <li class="download-item">
+          <span class="download-name">ভর্তি আবেদন ফর্ম ২০২৬-২৭</span>
+          <a href="#" class="download-btn">⬇ PDF</a>
+        </li>
+        <li class="download-item">
+          <span class="download-name">ভর্তি বিজ্ঞপ্তি ও নির্দেশিকা</span>
+          <a href="#" class="download-btn">⬇ PDF</a>
+        </li>
+        <li class="download-item">
+          <span class="download-name">পরীক্ষার সিলেবাস (ষষ্ঠ শ্রেণি)</span>
+          <a href="#" class="download-btn">⬇ PDF</a>
+        </li>
+        <li class="download-item">
+          <span class="download-name">পরীক্ষার সিলেবাস (নবম শ্রেণি)</span>
+          <a href="#" class="download-btn">⬇ PDF</a>
+        </li>
+        <li class="download-item">
+          <span class="download-name">ফি পরিশোধের নির্দেশিকা</span>
+          <a href="#" class="download-btn">⬇ PDF</a>
+        </li>
+        <li class="download-item">
+          <span class="download-name">বৃত্তি আবেদন ফর্ম</span>
+          <a href="#" class="download-btn">⬇ PDF</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- FAQ -->
+    <div class="sidebar-widget">
+      <div class="widget-header">❓ সাধারণ জিজ্ঞাসা</div>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <button class="faq-q">আবেদন ফর্ম কোথায় পাওয়া যাবে? <span class="faq-icon">+</span></button>
+          <div class="faq-a">বিদ্যালয়ের অফিস থেকে অথবা এই ওয়েবসাইটের ডাউনলোড বিভাগ থেকে ফর্ম সংগ্রহ করা যাবে।</div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-q">ভর্তি পরীক্ষায় কী কী বিষয় থাকবে? <span class="faq-icon">+</span></button>
+          <div class="faq-a">ষষ্ঠ শ্রেণিতে বাংলা, ইংরেজি ও গণিত। নবম শ্রেণিতে অতিরিক্ত বিজ্ঞান বিষয়ও থাকবে।</div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-q">বৃত্তির জন্য আলাদা আবেদন করতে হবে কি? <span class="faq-icon">+</span></button>
+          <div class="faq-a">মেধা ও প্রতিভা বৃত্তি স্বয়ংক্রিয়ভাবে দেওয়া হয়। দুস্থ সহায়তা বৃত্তির জন্য আলাদা ফর্ম জমা দিতে হবে।</div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-q">ভর্তির পর কি ট্রান্সফার সার্টিফিকেট লাগবে? <span class="faq-icon">+</span></button>
+          <div class="faq-a">হ্যাঁ, পূর্ববর্তী বিদ্যালয়ের ট্রান্সফার সার্টিফিকেট (TC) ভর্তির ৩০ দিনের মধ্যে জমা দিতে হবে।</div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-q">ফি কীভাবে পরিশোধ করা যাবে? <span class="faq-icon">+</span></button>
+          <div class="faq-a">বিদ্যালয় অফিসে নগদ অথবা বিকাশ/নগদ মোবাইল ব্যাংকিংয়ের মাধ্যমে ফি পরিশোধ করা যাবে।</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Recent Notices -->
+    <div class="sidebar-widget">
+      <div class="widget-header">📋 সাম্প্রতিক নোটিশ <a href="#">সব দেখুন</a></div>
+      <ul class="notice-list">
+        <li class="notice-item">
+          <div class="notice-dot"></div>
+          <div>
+            <a href="#">ভর্তি পরীক্ষার আসন বিন্যাস প্রকাশিত হয়েছে</a>
+            <span class="notice-date">১৮ এপ্রিল ২০২৬</span>
+          </div>
+        </li>
+        <li class="notice-item">
+          <div class="notice-dot"></div>
+          <div>
+            <a href="#">ষষ্ঠ শ্রেণির ভর্তি পরীক্ষার সিলেবাস প্রকাশ</a>
+            <span class="notice-date">১৫ এপ্রিল ২০২৬</span>
+          </div>
+        </li>
+        <li class="notice-item">
+          <div class="notice-dot"></div>
+          <div>
+            <a href="#">দুস্থ সহায়তা বৃত্তির আবেদন গ্রহণ শুরু</a>
+            <span class="notice-date">১০ এপ্রিল ২০২৬</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </aside>
+</div><!-- /page-wrapper -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">অনুশীলন প্রি-ক্যাডেট স্কুল</div>
+      <div class="footer-brand-sub">Anushilan Pre-Cadet School · ভৈরব, বাংলাদেশ</div>
+      <div class="footer-contact">
+        <span>📍 ভৈরব, কিশোরগঞ্জ-২৩৫০</span>
+        <span>📞 +৮৮০ ১৭০০-০০০০০০</span>
+        <span>✉️ info@anushilan.edu.bd</span>
+        <span>🕗 শনি–বৃহস্পতি: সকাল ৮:০০ – দুপুর ২:০০</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>আমাদের সম্পর্কে</h4>
+      <ul>
+        <li><a href="#">ইতিহাস</a></li>
+        <li><a href="#">লক্ষ্য ও উদ্দেশ্য</a></li>
+        <li><a href="#">অধ্যক্ষের বাণী</a></li>
+        <li><a href="#">শিক্ষক ও কর্মচারী</a></li>
+        <li><a href="#">অবকাঠামো</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>একাডেমিক</h4>
+      <ul>
+        <li><a href="#">পাঠ্যক্রম</a></li>
+        <li><a href="#">ক্লাস রুটিন</a></li>
+        <li><a href="#">পরীক্ষার সময়সূচি</a></li>
+        <li><a href="#">ফলাফল</a></li>
+        <li><a href="#">গ্রন্থাগার</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>ভর্তি</h4>
+      <ul>
+        <li><a href="#">অনলাইনে আবেদন</a></li>
+        <li><a href="#">ফি ও পেমেন্ট</a></li>
+        <li><a href="#">যোগ্যতা</a></li>
+        <li><a href="#">বৃত্তি</a></li>
+        <li><a href="#">যোগাযোগ করুন</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© ২০২৬ অনুশীলন প্রি-ক্যাডেট স্কুল। সর্বস্বত্ব সংরক্ষিত।</span>
+    <span>
+      <a href="#">গোপনীয়তা নীতি</a> ·
+      <a href="#">ব্যবহারের শর্তাবলি</a> ·
+      <a href="#">সাইটম্যাপ</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+// Hamburger
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+});
+
+// Fee tabs
+document.querySelectorAll('.fee-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.fee-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.fee-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.fee).classList.add('active');
+  });
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q').forEach(b => { b.classList.remove('open'); b.nextElementSibling.classList.remove('open'); });
+    if (!isOpen) { btn.classList.add('open'); btn.nextElementSibling.classList.add('open'); }
+  });
+});
+</script>
+</body>
+</html>
